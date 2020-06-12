@@ -2,10 +2,19 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using MCFunctionEditor.Core.Forms;
+
 namespace MCFunctionEditor.Core
 {
 	public class MainForm : Form
 	{
+	
+		TreeView treeView = new TreeView();
+		TabControl tabControl = new TabControl();
+		
+		int tabWidth = 0;
+		int tabHeight = 0;
+		
 		public MainForm() : base()	
 		{
 			this.Name = "MCFunctionEditor";
@@ -28,7 +37,7 @@ namespace MCFunctionEditor.Core
 			fileTap.DropDownItems.Add(fileNewMenu);
 			
 			ToolStripMenuItem fileNewScriptEditorMenu = new ToolStripMenuItem("스크립트 에디터");
-			ToolStripMenuItem fileNewGiveEditorMenu = new ToolStripMenuItem("Give 에디터");
+			ToolStripMenuItem fileNewGiveEditorMenu = new ToolStripMenuItem("Give 에디터", null, new EventHandler(fileNewGiveEditorMenu_Click));
 			ToolStripMenuItem fileNewSummonEditorMenu = new ToolStripMenuItem("Summon 에디터");
 			ToolStripMenuItem[] fileNewMenus = { fileNewScriptEditorMenu, fileNewGiveEditorMenu, fileNewSummonEditorMenu };
 			for (int i = 0; i < fileNewMenus.Length; i++)
@@ -37,8 +46,8 @@ namespace MCFunctionEditor.Core
 			}
 			
 			TableLayoutPanel mainPanel = new TableLayoutPanel();
-			mainPanel.Location = new Point(0, 0);
-			mainPanel.Size = new Size(this.Width, this.Height);
+			mainPanel.Location = new Point(0, 24);
+			mainPanel.Size = new Size(this.Width - 8, this.Height - 52);
 			mainPanel.RowCount = 1;
 			mainPanel.ColumnCount = 4;
 			this.Controls.Add(mainPanel);
@@ -46,7 +55,6 @@ namespace MCFunctionEditor.Core
 			
 			// https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.forms.treeview?view=netcore-3.1
 			
-			TreeView treeView = new TreeView();
 			treeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                     | System.Windows.Forms.AnchorStyles.Left)
                     | System.Windows.Forms.AnchorStyles.Right)));
@@ -54,20 +62,19 @@ namespace MCFunctionEditor.Core
 			
 			
 			// https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.forms.tabcontrol?view=netcore-3.1
-			TabControl tabControl = new TabControl();
 			tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                     | System.Windows.Forms.AnchorStyles.Left)
                     | System.Windows.Forms.AnchorStyles.Right)));
 			mainPanel.Controls.Add(tabControl, 1, 0);
 			mainPanel.SetColumnSpan(tabControl, 3);
+			
+			tabWidth = tabControl.Width;
+			tabHeight = tabControl.Height;
 		}
 	
-		// void windowNewMenu_Click(object sender, EventArgs e)
-		// {
-		// 	Form f = new Form();
-		// 	f.MdiParent = this;
-		// 	f.Text = "Form - " + this.MdiChildren.Length.ToString();
-		// 	f.Show();
-		// }
+		void fileNewGiveEditorMenu_Click(object sender, EventArgs e)
+		{
+			tabControl.Controls.AddRange(new Control[] {new EditorGive(tabWidth, tabHeight)});
+		}
 	}
 }

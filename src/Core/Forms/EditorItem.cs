@@ -12,6 +12,7 @@ namespace MCFunctionEditor.Core.Forms
 		TabControl tabControl = new TabControl();
 		
 		EditorTabItem tabItem = new EditorTabItem();
+		EditorTabEnchant tabEnchant = new EditorTabEnchant();
 		
 		public EditorItem() : base()
 		{
@@ -26,6 +27,7 @@ namespace MCFunctionEditor.Core.Forms
 			tabControl.DrawItem += new DrawItemEventHandler(tabControl_DrawItem);
 			
 			tabControl.Controls.Add(tabItem);
+			tabControl.Controls.Add(tabEnchant);
 			this.Controls.Add(tabControl);
 		}
 		

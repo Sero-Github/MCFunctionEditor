@@ -33,7 +33,7 @@ namespace MCFunctionEditor.Core.Forms.Item
 				{
 					Label nameLabel = new Label();
 					nameLabel.Dock = DockStyle.Fill;
-					nameLabel.Text = enchantList[i + j];
+					nameLabel.Text = enchantList[i * 2 + j];
 					mainPanel.Controls.Add(nameLabel, j * 2, i);
 					
 					txtEnchantLevel[i + j] = new TextBox();

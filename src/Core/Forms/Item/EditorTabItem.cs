@@ -2,7 +2,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using MCFunctionEditor.Core.Forms.Common;
+
 using MCFunctionEditor.Resource;
+
 
 namespace MCFunctionEditor.Core.Forms.Item
 {
@@ -16,6 +19,8 @@ namespace MCFunctionEditor.Core.Forms.Item
 		public TextBox txtCount = new TextBox();
 		public TextBox txtCustomModelData = new TextBox();
 		public TextBox txtCustomTags = new TextBox();
+		
+		public TextEditPanel txtName = new TextEditPanel();
 		
 		public EditorTabItem() : base()
 		{
@@ -51,6 +56,9 @@ namespace MCFunctionEditor.Core.Forms.Item
 				mainPanel.Controls.Add(txtItemArr[i], 0, i + 1);
 				mainPanel.SetColumnSpan(txtItemArr[i], 3);
 			}
+			
+			mainPanel.Controls.Add(txtName, 1, 1);
+			mainPanel.SetColumnSpan(txtName, 3);
 		}
 	}
 }

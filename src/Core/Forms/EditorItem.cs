@@ -38,15 +38,6 @@ namespace MCFunctionEditor.Core.Forms
 			TabPage _tabPage = tabControl.TabPages[e.Index];
 			Rectangle _tabBounds = tabControl.GetTabRect(e.Index);
 			
-			if (e.State == DrawItemState.Selected)
-			{
-				// g.FillRectangle(Brushes.Gray, e.Bounds);
-			}
-			else
-			{
-				// e.DrawBackground();
-			}
-			
 			Font _tabFont = new Font("Arial", 10.0f, FontStyle.Regular, GraphicsUnit.Pixel);
 			StringFormat _stringFlags = new StringFormat();
 			_stringFlags.Alignment = StringAlignment.Center;

@@ -50,17 +50,10 @@ namespace MCFunctionEditor.Core
 			this.Controls.Add(mainPanel);
 			
 			// https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.forms.treeview?view=netcore-3.1
-			// treeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			// | System.Windows.Forms.AnchorStyles.Left)
-			// | System.Windows.Forms.AnchorStyles.Right)));
 			treeView.Dock = DockStyle.Fill;
 			mainPanel.Controls.Add(treeView, 0, 0);
 			
 			// https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.forms.tabcontrol?view=netcore-3.1
-			// tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			// | System.Windows.Forms.AnchorStyles.Left)
-			// | System.Windows.Forms.AnchorStyles.Right)));
-			
 			tabControl.Dock = DockStyle.Fill;
 			mainPanel.Controls.Add(tabControl, 1, 0);
 			mainPanel.SetColumnSpan(tabControl, 3);

@@ -15,7 +15,6 @@ namespace MCFunctionEditor.Core.Forms.Common
 			
 			this.Size = new Size(250, 120);
 			this.Dock = DockStyle.Fill;
-			// this.ColumnStyles.Clear();
 			this.ColumnCount = 5;
 			this.RowCount = 4;
 			
@@ -43,8 +42,11 @@ namespace MCFunctionEditor.Core.Forms.Common
 					cmbSetting[i * 2 + j].Dock = DockStyle.Fill;
 					this.Controls.Add(cmbSetting[i * 2 + j], j * 2 + 1, i + 1);
 					
-					if (i + j * 2 > 0)
+					if (i + j * 2 == 0)
+						cmbSetting[0].Items.AddRange(new String[] { "unset", "reset", "black", "dark_blue", "dark_green", "dark_aqua", "dark_red", "dark_purple", "gold", "dark_gray", "gray", "blue", "green", "aqua", "red", "light_purple", "yellow" });
+					else
 						cmbSetting[i * 2 + j].Items.AddRange(new String[] { "Unset", "True", "False" } );
+					cmbSetting[i * 2 + j].SelectedIndex = 0;
 				}
 			}
 			
